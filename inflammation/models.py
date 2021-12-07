@@ -1,4 +1,5 @@
-"""Module containing models representing patients and their data.
+"""
+Module containing models representing patients and their data.
 
 The Model layer is responsible for the 'business logic' part of the software.
 
@@ -13,6 +14,7 @@ import numpy as np
 def load_csv(filename):
     """
     Load a Numpy array from a CSV
+
     :param filename: Filename of CSV to load
     """
     return np.loadtxt(fname=filename, delimiter=',')
@@ -21,6 +23,7 @@ def load_csv(filename):
 def daily_mean(data):
     """
     Calculate the daily mean of a 2D inflammation data array.
+
     :param list data: 2D array of data
     :returns: Array of mean values for the day
     """
@@ -30,6 +33,7 @@ def daily_mean(data):
 def daily_max(data):
     """
     Calculate the daily max of a 2D inflammation data array.
+
     :param list data:  2D array of data
     :returns: Array of max values for the day
     """
@@ -39,6 +43,7 @@ def daily_max(data):
 def daily_min(data):
     """
     Calculate the daily min of a 2D inflammation data array.
+
     :param list data:  2D array of data
     :returns: Array of minimum values for the day
     """
@@ -47,7 +52,6 @@ def daily_min(data):
 def patient_normalise(data):
     """
     Normalise patient data between 0 and 1 of a 2D inflammation data array.
-
     Any NaN values are ignored, and normalised to 0
 
     :param data: 2d array of inflammation data

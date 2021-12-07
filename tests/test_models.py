@@ -51,19 +51,19 @@ def test_daily_min(test, expected):
             None,
         ),
         (
-                [["Test", 2, 3], [4, 5, 6], [7, 8, 9]],
-                [[0.33, 0.67, 1], [0.67, 0.83, 1], [0.78, 0.89, 1]],
-                TypeError,
+            [["Test", 2, 3], [4, 5, 6], [7, 8, 9]],
+            [[0.33, 0.67, 1], [0.67, 0.83, 1], [0.78, 0.89, 1]],
+            TypeError,
         ),
         (
-                [],
-                [],
-                ValueError,
+            [],
+            [],
+            ValueError,
         ),
         (
-                3,
-                None,
-                TypeError,
+            3,
+            None,
+            TypeError,
         ),
     ])
 def test_patient_normalise(test, expected, raises):
