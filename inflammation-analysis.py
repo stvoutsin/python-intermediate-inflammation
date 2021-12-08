@@ -1,5 +1,7 @@
-#!/usr/bin/env python3
-"""Software for managing and analysing patients' inflammation data in our imaginary hospital."""
+# file: inflammation-analysis.py
+
+# !/usr/bin/env python3
+"""Software for managing patient data in our imaginary hospital."""
 
 import argparse
 
@@ -7,7 +9,8 @@ from inflammation import models, views
 
 
 def main(args):
-    """The MVC Controller of the patient inflammation data system.
+    """
+    The MVC Controller of the patient data system.
 
     The Controller is responsible for:
     - selecting the necessary models and views for the current task
@@ -19,21 +22,50 @@ def main(args):
 
     for filename in infiles:
         inflammation_data = models.load_csv(filename)
-        view_data = {
-            'average': models.daily_mean(inflammation_data),
-            'max': models.daily_max(inflammation_data),
-            'min': models.daily_min(inflammation_data)
-        }
-        views.visualize(view_data)
+
+        if args.view == 'visualize':
+            view_data = {
+                'average': models.daily_mean(inflammation_data),
+                'max': models.daily_max(inflammation_data),
+                'min': models.daily_min(inflammation_data),
+            }
+
+            views.visualize(view_data)
+
+        elif args.view == 'record':
+            patient_data = inflammation_data[args.patient]
+            observations = [models.Observation(day, value) for day, value in enumerate(patient_data)]
+            patient = models.Patient('UNKNOWN', observations)
+
+            views.display_patient_record(patient)
+
+        elif args.view == 'json':
+            patient_data = inflammation_data[args.patient]
+            observations = [models.Observation(day, value) for day, value in enumerate(patient_data)]
+            patient = models.Patient('UNKNOWN', observations)
+            views.display_patient_as_json(patient)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description='A basic patient inflammation data management system')
+        description='A basic patient data management system')
 
     parser.add_argument(
         'infiles',
         nargs='+',
         help='Input CSV(s) containing inflammation series for each patient')
+
+    parser.add_argument(
+        '--view',
+        default='visualize',
+        choices=['visualize', 'record', 'json'],
+        help='Which view should be used?')
+
+    parser.add_argument(
+        '--patient',
+        type=int,
+        default=0,
+        help='Which patient should be displayed?')
 
     args = parser.parse_args()
 
