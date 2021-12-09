@@ -91,6 +91,7 @@ def test_load_txt():
     from inflammation import models
 
     filename = "https://raw.githubusercontent.com/stvoutsin/" \
-               "python-intermediate-inflammation/main/data/inflammation-01.csv"
+               "python-intermediate-inflammation/" \
+               "c8713a17cd7303a0e83d598a4c69cdf78fdb7624/data/inflammation-01.csv"
     inflammation_data = models.load_csv(filename)
     assert (len(inflammation_data) > 0)
