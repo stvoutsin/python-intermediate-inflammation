@@ -72,3 +72,6 @@ You can contact me for any questions, issues or information on this project at m
 Credits to the Carpentry Incubator project & team at: https://github.com/carpentries-incubator/python-intermediate-inflammation
 
 ## Licence
+Inflam is available under the GNU license. See the LICENSE file for more info.
+
+
