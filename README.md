@@ -63,6 +63,11 @@ apt-get install libjpeg-dev zlib1g-dev gcc libpq-dev -y
     python3 setup.py install
     ```
 
+## Usage
+```
+python inflammation-analysis.py [--view visualize|record] [--patient <patient number>] <data/datafile>
+```
+
 ## Contact Information
 
 You can contact me for any questions, issues or information on this project at my github account: @stvoutsin
