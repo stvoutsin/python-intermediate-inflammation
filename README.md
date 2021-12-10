@@ -64,8 +64,9 @@ apt-get install libjpeg-dev zlib1g-dev gcc libpq-dev -y
     ```
 
 ## Usage
-
+```
 python inflammation-analysis.py [--view visualize|record] [--patient <patient number>] <data/datafile>
+```
 
 ## Contact Information
 
